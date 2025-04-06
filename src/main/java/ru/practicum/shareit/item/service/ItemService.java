@@ -9,7 +9,7 @@ public interface ItemService {
 
     List<ItemDto> getItemsByOwner(long userId);
 
-    List<ItemDto> SearchItems(String text);
+    List<ItemDto> searchItems(String text);
 
     ItemDto saveItem(ItemDto itemDto, long userId);
 

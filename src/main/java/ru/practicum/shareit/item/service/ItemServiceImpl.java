@@ -37,11 +37,11 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public List<ItemDto> SearchItems(String text) {
+    public List<ItemDto> searchItems(String text) {
         if (text.isBlank()) {
             return Collections.emptyList();
         }
-        return itemRepository.SearchItems(text)
+        return itemRepository.searchItems(text)
                 .stream()
                 .map(ItemMapper::toItemDto)
                 .collect(Collectors.toList());

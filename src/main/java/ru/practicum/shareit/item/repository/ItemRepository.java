@@ -10,7 +10,7 @@ public interface ItemRepository {
 
     List<Item> getItemsByOwner(long userId);
 
-    List<Item> SearchItems(String text);
+    List<Item> searchItems(String text);
 
     Item saveItem(Item item, long userId);
 }

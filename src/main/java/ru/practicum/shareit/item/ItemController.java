@@ -31,9 +31,9 @@ public class ItemController {
     }
 
     @GetMapping("/search")
-    public List<ItemDto> SearchItems(@RequestParam String text) {
+    public List<ItemDto> searchItems(@RequestParam String text) {
         log.info("Получен GET-запрос для поиска товаров по тексту: {}", text);
-        return itemService.SearchItems(text);
+        return itemService.searchItems(text);
     }
 
     @PostMapping

@@ -25,7 +25,7 @@ public class InMemoryItemRepository implements ItemRepository {
     }
 
     @Override
-    public List<Item> SearchItems(String text) {
+    public List<Item> searchItems(String text) {
         String searchText = text.toLowerCase();
         return items.values().stream()
                 .filter(item -> item.getAvailable() &&
