@@ -39,7 +39,7 @@ public class ErrorHandler {
     @ResponseStatus(HttpStatus.CONFLICT)
     public ErrorResponse handleNotUniqueException(final NotUniqueEmailException e) {
         return new ErrorResponse(
-                "bad email",
+                String.format("Данный email %s уже находится в базе", e.getEmail()),
                 e.getMessage()
         );
     }

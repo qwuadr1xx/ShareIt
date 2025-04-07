@@ -49,9 +49,8 @@ public class UserServiceImpl implements UserService {
 
         userRepository.deleteUser(userId);
         checkEmailUniqueness(updatedUser.getEmail());
-        userRepository.saveUser(updatedUser);
 
-        return UserMapper.toUserDto(updatedUser);
+        return UserMapper.toUserDto(userRepository.updateUser(updatedUser));
     }
 
     @Override
@@ -69,7 +68,7 @@ public class UserServiceImpl implements UserService {
         boolean emailExists = userRepository.getAllUsers().stream()
                 .anyMatch(user -> user.getEmail().equalsIgnoreCase(email));
         if (emailExists) {
-            throw new NotUniqueEmailException(email);
+            throw new NotUniqueEmailException(email, "Email");
         }
     }
 }

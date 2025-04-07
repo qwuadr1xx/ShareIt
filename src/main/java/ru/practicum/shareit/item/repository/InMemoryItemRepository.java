@@ -11,8 +11,8 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class InMemoryItemRepository implements ItemRepository {
     private long localId = 1;
-    private final Map<Long, Item> items;
-    private final Map<Long, List<Item>> itemToUser;
+    private final Map<Long, Item> items = new HashMap<>();
+    private final Map<Long, List<Item>> itemToUser = new HashMap<>();
 
     @Override
     public Optional<Item> getItemById(long itemId) {
@@ -44,6 +44,14 @@ public class InMemoryItemRepository implements ItemRepository {
         List<Item> itemsByOwner = itemToUser.computeIfAbsent(userId, l -> new ArrayList<>());
         itemsByOwner.add(localItem);
         return localItem;
+    }
+
+    @Override
+    public Item updateItem(Item item, long userId) {
+        items.put(item.getId(), item);
+        List<Item> itemsByOwner = itemToUser.computeIfAbsent(userId, l -> new ArrayList<>());
+        itemsByOwner.add(item);
+        return item;
     }
 
     private long generateId() {

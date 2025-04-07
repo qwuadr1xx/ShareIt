@@ -13,4 +13,6 @@ public interface ItemRepository {
     List<Item> searchItems(String text);
 
     Item saveItem(Item item, long userId);
+
+    Item updateItem(Item item, long userId);
 }

@@ -70,8 +70,6 @@ public class ItemServiceImpl implements ItemService {
                 .available(itemDto.getAvailable() == null ? existingItem.getAvailable() : itemDto.getAvailable())
                 .build();
 
-        itemRepository.saveItem(updatedItem, userId);
-
-        return ItemMapper.toItemDto(updatedItem);
+        return ItemMapper.toItemDto(itemRepository.updateItem(updatedItem, userId));
     }
 }

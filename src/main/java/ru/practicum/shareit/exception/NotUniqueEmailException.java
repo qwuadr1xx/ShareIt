@@ -6,5 +6,6 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public class NotUniqueEmailException extends RuntimeException {
+    private final String email;
     private final String entity;
 }
