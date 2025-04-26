@@ -2,6 +2,7 @@ package ru.practicum.shareit.item.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.shareit.booking.dto.BookingDtoOut;
 import ru.practicum.shareit.booking.mapper.BookingMapper;
 import ru.practicum.shareit.booking.repository.BookingRepository;
@@ -36,6 +37,7 @@ public class ItemServiceImpl implements ItemService {
     private final BookingRepository bookingRepository;
 
     @Override
+    @Transactional(readOnly = true)
     public ItemDtoOut getItemById(Long itemId, Long userId) {
         Item item = findByIdOrThrow(itemId);
         if (!item.getOwner().getId().equals(userId)) {
@@ -47,6 +49,7 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<ItemDtoOut> getItemsByOwner(Long userId) {
         userService.getUserById(userId);
 
@@ -74,6 +77,7 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<ItemDtoOutShort> searchItems(String text) {
         if (text.isBlank()) {
             return Collections.emptyList();
@@ -86,6 +90,7 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
+    @Transactional
     public ItemDtoOutShort saveItem(ItemDtoIn itemDtoIn, Long userId) {
         User user;
         Item item = ItemMapper.toItem(itemDtoIn);
@@ -100,6 +105,7 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
+    @Transactional
     public ItemDtoOutShort updateItem(Long itemId, ItemDtoIn itemDtoIn, Long userId) {
         userService.findByIdOrThrow(userId);
         Item existingItem = findByIdOrThrow(itemId);
@@ -118,6 +124,7 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
+    @Transactional
     public CommentDtoOut addComment(Long itemId, Long userId, CommentDtoIn commentDto) {
         Item item = findByIdOrThrow(itemId);
         User user = userService.findByIdOrThrow(userId);
