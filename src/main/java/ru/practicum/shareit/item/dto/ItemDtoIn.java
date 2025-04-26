@@ -7,9 +7,7 @@ import lombok.Data;
 
 @Data
 @Builder(toBuilder = true)
-public class ItemDto {
-    private final Long id;
-
+public class ItemDtoIn {
     @NotBlank(message = "Name can't be blank")
     private final String name;
 
