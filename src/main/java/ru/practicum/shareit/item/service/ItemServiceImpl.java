@@ -40,12 +40,24 @@ public class ItemServiceImpl implements ItemService {
     @Transactional(readOnly = true)
     public ItemDtoOut getItemById(Long itemId, Long userId) {
         Item item = findByIdOrThrow(itemId);
+
         if (!item.getOwner().getId().equals(userId)) {
-            return ItemMapper.toItemDto(item, commentRepository.findByItemId(itemId).stream().map(CommentMapper::toCommentDto).collect(Collectors.toList()), null, null);
+            return ItemMapper.toItemDto(
+                    item,
+                    commentRepository.findByItemId(itemId).stream()
+                            .map(CommentMapper::toCommentDto).collect(Collectors.toList()),
+                    null,
+                    null
+            );
         }
 
-        return ItemMapper.toItemDto(item, commentRepository.findByItemId(itemId).stream().map(CommentMapper::toCommentDto).collect(Collectors.toList()),
-                BookingMapper.toBookingDto(bookingRepository.findLastBookingByItemIdOrderByStartDesc(itemId)), BookingMapper.toBookingDto(bookingRepository.findFirstBookingByItemIdOrderByStartAsc(itemId)));
+        return ItemMapper.toItemDto(
+                item,
+                commentRepository.findByItemId(itemId).stream()
+                        .map(CommentMapper::toCommentDto).collect(Collectors.toList()),
+                BookingMapper.toBookingDto(bookingRepository.findLastBookingByItemIdOrderByStartDesc(itemId)),
+                BookingMapper.toBookingDto(bookingRepository.findFirstBookingByItemIdOrderByStartAsc(itemId))
+        );
     }
 
     @Override

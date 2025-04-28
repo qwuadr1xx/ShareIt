@@ -43,6 +43,10 @@ public class BookingServiceImpl implements BookingService {
             throw new BadRequestException(String.format("Bookings с id %s невозможно забукить", bookingDtoIn.getItemId()), "Booking");
         }
 
+        if (item.getOwner().getId().equals(userId)) {
+            throw new BadRequestException(String.format("Нельзя забукить собственную вещь с id %s", item.getId()), "Booking");
+        }
+
         Booking booking = BookingMapper.toBooking(bookingDtoIn).toBuilder()
                 .item(item)
                 .booker(user)
@@ -59,6 +63,10 @@ public class BookingServiceImpl implements BookingService {
                 .findByIdAndItemOwnerId(bookingId, userId)
                 .orElseThrow(() -> new BadRequestException(String.format("%s сущности User не является " +
                         "владельцем или букером", userId), "Booking"));
+
+        if (booking.getStatus().equals(Status.APPROVED) || booking.getStatus().equals(Status.REJECTED)) {
+            throw new BadRequestException(String.format("Статус бука с id %s уже финальный", bookingId), "Booking");
+        }
 
         booking.setStatus(Boolean.TRUE.equals(approve) ? Status.APPROVED : Status.REJECTED);
         return BookingMapper.toBookingDto(booking);
