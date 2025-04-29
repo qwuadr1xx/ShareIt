@@ -1,5 +1,6 @@
 package ru.practicum.shareit.exception;
 
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -42,5 +43,15 @@ public class ErrorHandler {
                 String.format("Данный email %s уже находится в базе", e.getEmail()),
                 e.getMessage()
         );
+    }
+
+    @ExceptionHandler
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ErrorResponse handleEntityNotFoundException(final EntityNotFoundException e) {
+        return new ErrorResponse(
+                "id не найден",
+                e.getMessage()
+        );
+
     }
 }
