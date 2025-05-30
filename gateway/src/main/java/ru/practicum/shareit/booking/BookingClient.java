@@ -17,7 +17,7 @@ public class
 BookingClient extends BaseClient {
     private static final String API_PREFIX = "/bookings";
 
-    public BookingClient(@Value("${shareit-server.url}" ) String serverUrl) {
+    public BookingClient(@Value("${shareit-server.url}") String serverUrl) {
         super(RestClient.builder().baseUrl(serverUrl + API_PREFIX).build(), serverUrl + API_PREFIX);
     }
 

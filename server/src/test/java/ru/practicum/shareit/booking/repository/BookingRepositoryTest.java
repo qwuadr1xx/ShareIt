@@ -38,7 +38,6 @@ class BookingRepositoryTest {
 
     private User owner;
     private User booker;
-    private Item item;
     private Booking pastBooking;
     private Booking currentBooking;
     private Booking futureBooking;
@@ -62,7 +61,7 @@ class BookingRepositoryTest {
                 .build();
         userRepository.save(booker);
 
-        item = Item.builder()
+        Item item = Item.builder()
                 .name("Drill")
                 .description("Powerful drill")
                 .available(true)

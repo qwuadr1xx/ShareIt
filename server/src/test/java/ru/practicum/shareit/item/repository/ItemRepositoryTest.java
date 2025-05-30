@@ -55,7 +55,7 @@ class ItemRepositoryTest {
                 .owner(owner)
                 .build());
 
-        Item saw = itemRepository.save(Item.builder()
+        itemRepository.save(Item.builder()
                 .name("Saw")
                 .description("Hand saw")
                 .available(false)
