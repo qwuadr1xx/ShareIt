@@ -15,7 +15,7 @@ import java.util.Collections;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class ItemRequestDtoJsonTest {
+class ItemRequestDtoTest {
 
     private JacksonTester<ItemRequestDtoOut> jsonOut;
     private JacksonTester<ItemRequestDtoIn> jsonIn;

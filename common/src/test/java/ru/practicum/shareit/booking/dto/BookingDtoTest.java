@@ -68,12 +68,12 @@ class BookingDtoTest {
     @Test
     void deserializeBookingDtoIn() throws Exception {
         String input = """
-            {
-              "itemId": 2,
-              "start": "2025-05-01T12:00:00",
-              "end": "2025-05-02T12:00:00"
-            }
-            """;
+                {
+                  "itemId": 2,
+                  "start": "2025-05-01T12:00:00",
+                  "end": "2025-05-02T12:00:00"
+                }
+                """;
 
         BookingDtoIn dto = jsonIn.parseObject(input);
 

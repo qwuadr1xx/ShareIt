@@ -10,7 +10,7 @@ import org.springframework.boot.test.json.JsonContent;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class UserDtoJsonTest {
+class UserDtoTest {
 
     private JacksonTester<UserDto> jsonUser;
     private JacksonTester<UserDtoForItemRequest> jsonShort;
