@@ -36,7 +36,6 @@ class UserRepositoryTest {
         assertNotNull(saved.getId(), "ID должен быть присвоен после сохранения");
         assertEquals("Test User", saved.getName());
         assertEquals("test@example.com", saved.getEmail());
-        
         User fetched = userRepository.findById(saved.getId()).orElseThrow();
         assertEquals(saved.getId(), fetched.getId());
         assertEquals("Test User", fetched.getName());
