@@ -2,6 +2,8 @@ package ru.practicum.shareit.booking.dto;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.AllArgsConstructor ;
+import lombok.NoArgsConstructor;
 import ru.practicum.shareit.booking.enums.Status;
 import ru.practicum.shareit.item.dto.ItemDtoOutShort;
 import ru.practicum.shareit.user.dto.UserDto;
@@ -9,17 +11,19 @@ import ru.practicum.shareit.user.dto.UserDto;
 import java.time.LocalDateTime;
 
 @Data
+@NoArgsConstructor
 @Builder(toBuilder = true)
+@AllArgsConstructor
 public class BookingDtoOut {
-    private final Long id;
+    private Long id;
 
-    private final LocalDateTime start;
+    private LocalDateTime start;
 
-    private final LocalDateTime end;
+    private LocalDateTime end;
 
-    private final ItemDtoOutShort item;
+    private ItemDtoOutShort item;
 
-    private final UserDto booker;
+    private UserDto booker;
 
-    private final Status status;
+    private Status status;
 }

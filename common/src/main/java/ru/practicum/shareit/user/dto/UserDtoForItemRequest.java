@@ -7,8 +7,8 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 @Builder(toBuilder = true)
+@AllArgsConstructor
 public class UserDtoForItemRequest {
     private Long id;
 

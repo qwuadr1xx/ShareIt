@@ -8,8 +8,8 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 @Builder(toBuilder = true)
+@AllArgsConstructor
 public class CommentDtoIn {
     @NotBlank(message = "Text must be not blank")
     private String text;

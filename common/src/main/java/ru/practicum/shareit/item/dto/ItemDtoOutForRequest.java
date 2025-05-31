@@ -2,13 +2,17 @@ package ru.practicum.shareit.item.dto;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.AllArgsConstructor ;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 @Builder(toBuilder = true)
+@AllArgsConstructor
 public class ItemDtoOutForRequest {
-    private final Long id;
+    private Long id;
 
-    private final String name;
+    private String name;
 
-    private final Long ownerId;
+    private Long ownerId;
 }

@@ -10,8 +10,8 @@ import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 @Builder(toBuilder = true)
+@AllArgsConstructor
 public class BookingDtoIn {
     @Positive(message = "Item id must be positive")
     private Long itemId;
