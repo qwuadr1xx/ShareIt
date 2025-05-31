@@ -45,11 +45,7 @@ public class CommentDtoTest {
 
     @Test
     void deserializeCommentDtoIn() throws Exception {
-        String input = """
-                {
-                  "text": "comment"
-                }
-                """;
+        String input = "{\"text\": \"comment\"}";
 
         CommentDtoIn dto = jsonIn.parseObject(input);
 
