@@ -41,13 +41,7 @@ class UserDtoTest {
 
     @Test
     void deserializeUserDto() throws Exception {
-        String input = """
-                {
-                  "id": 55,
-                  "name": "User",
-                  "email": "User@gmail.com"
-                }
-                """;
+        String input = "{\"id\": 55, \"name\": \"User\", \"email\": \"User@gmail.com\"}";
 
         UserDto dto = jsonUser.parseObject(input);
 

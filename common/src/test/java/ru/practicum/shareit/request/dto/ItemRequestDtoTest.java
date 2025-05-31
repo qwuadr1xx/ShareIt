@@ -64,11 +64,7 @@ class ItemRequestDtoTest {
 
     @Test
     void deserializeItemRequestDtoIn() throws Exception {
-        String input = """
-                {
-                  "description": "Need item"
-                }
-                """;
+        String input = "{\"description\": \"Need item\"}";
 
         ItemRequestDtoIn dto = jsonIn.parseObject(input);
 
