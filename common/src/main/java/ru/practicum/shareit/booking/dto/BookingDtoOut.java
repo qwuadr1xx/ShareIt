@@ -2,7 +2,7 @@ package ru.practicum.shareit.booking.dto;
 
 import lombok.Builder;
 import lombok.Data;
-import lombok.AllArgsConstructor ;
+import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import ru.practicum.shareit.booking.enums.Status;
 import ru.practicum.shareit.item.dto.ItemDtoOutShort;
